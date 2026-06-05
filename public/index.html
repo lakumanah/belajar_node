@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Wisma</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div>
+        <p class="eyebrow">Manajemen Data</p>
+        <h1>Dashboard Wisma</h1>
+      </div>
+      <button type="button" class="btn btn-primary" id="btn-tambah">+ Tambah Wisma</button>
+    </header>
+
+    <section class="stats" id="stats">
+      <article class="stat-card">
+        <span>Total Wisma</span>
+        <strong id="stat-total">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Provinsi</span>
+        <strong id="stat-provinsi">0</strong>
+      </article>
+      <article class="stat-card">
+        <span>Dengan Koordinat</span>
+        <strong id="stat-koordinat">0</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Daftar Wisma</h2>
+        <input type="search" id="search" placeholder="Cari provinsi, kota, kelurahan..." aria-label="Cari wisma">
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Alamat</th>
+              <th>No. Wisma</th>
+              <th>Koordinat</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <tr>
+              <td colspan="5" class="empty">Memuat data...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <dialog id="form-dialog" class="dialog">
+    <form id="wisma-form" method="dialog">
+      <div class="dialog-header">
+        <h2 id="form-title">Tambah Wisma</h2>
+        <button type="button" class="btn-icon" id="btn-close" aria-label="Tutup">&times;</button>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          Provinsi <span class="required">*</span>
+          <input type="text" name="provinsi" required>
+        </label>
+        <label>
+          Kabupaten/Kota <span class="required">*</span>
+          <input type="text" name="kabupaten_kota" required>
+        </label>
+        <label>
+          Kecamatan <span class="required">*</span>
+          <input type="text" name="kecamatan" required>
+        </label>
+        <label>
+          Kelurahan <span class="required">*</span>
+          <input type="text" name="kelurahan" required>
+        </label>
+        <label>
+          Dusun/Kampung
+          <input type="text" name="dusun_kampung">
+        </label>
+        <label>
+          RT
+          <input type="text" name="rt" maxlength="5">
+        </label>
+        <label>
+          RW
+          <input type="text" name="rw" maxlength="5">
+        </label>
+        <label>
+          Nomor Wisma
+          <input type="text" name="nomor_wisma">
+        </label>
+        <label>
+          Latitude
+          <input type="number" name="latitude" step="any" min="-90" max="90" placeholder="-7.940995">
+        </label>
+        <label>
+          Longitude
+          <input type="number" name="longitude" step="any" min="-180" max="180" placeholder="112.613911">
+        </label>
+      </div>
+
+      <p id="form-error" class="form-error" hidden></p>
+
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-secondary" id="btn-batal">Batal</button>
+        <button type="submit" class="btn btn-primary" id="btn-simpan">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="/js/app.js" type="module"></script>
+</body>
+</html>

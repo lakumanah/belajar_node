@@ -1,7 +1,10 @@
 import express from 'express';
-import { pathToFileURL } from 'url';
+import path from 'path';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { withClient } from './db.js';
 import wismaRoutes from './routes/wisma.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function testKoneksi() {
   try {
@@ -16,8 +19,9 @@ const app = express();
 
 app.use(express.json());
 app.use('/api/wisma', wismaRoutes);
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', async (req, res) => {
+app.get('/api/status', async (req, res) => {
   try {
     const result = await testKoneksi();
     if (result.success) {
